@@ -82,6 +82,7 @@ Comentários explicativos para o modal:
         <p>ID: <span id="productId"></span></p>
         <p>Nome: <span id="productName"></span></p>
         <p>Valor: <span id="productValue"></span></p>
+        <p>tra <span ></span></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
@@ -112,6 +113,7 @@ Comentários explicativos para o modal:
       </tr>
     </thead>
       <tbody>
+       
         <?php
         include 'conexao.php'; // Inclui o arquivo de conexão com o banco de dados
 
