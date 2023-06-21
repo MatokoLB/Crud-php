@@ -37,7 +37,6 @@ if (isset($_POST['nome'], $_POST['sobrenome'],$_POST['email'], $_POST['operacao'
                 $id = $_POST['id'];
 
                 // Prepare a atualização dos dados no banco
-                $sql = "UPDATE produto SET nome = ?, valor = ? WHERE id = ?";
                 $sql = "UPDATE aluno SET nome = ?, sobrenome = ?, email = ? WHERE id = ?";
 
                 if ($stmt = $conn->prepare($sql)) {
@@ -71,4 +70,4 @@ if (isset($_POST['nome'], $_POST['sobrenome'],$_POST['email'], $_POST['operacao'
 
 // Feche a conexão
 $conn->close();
-?>?>
+?>
