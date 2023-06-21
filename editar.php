@@ -13,13 +13,14 @@ if (isset($_GET['id'])) {
   }
 
   // Verificar se os campos de nome e valor foram enviados. Na primeira vez não vai passar aqui, pq vem de metodo GET
-  if (isset($_POST['nome']) && isset($_POST['valor'])) {
+  if (isset($_POST['nome']) && isset($_POST['sobrenome'])  && isset($_POST['email'])) {
     // Recuperar os valores dos campos do formulário
     $novoNome = $_POST['nome'];
-    $novoValor = $_POST['valor'];
+    $novoSobrenome = $_POST['sobrenome'];
+    $novoEmail = $_POST['email'];
 
     // Atualizar os valores do registro no banco de dados
-    $sqlUpdate = "UPDATE produto SET nome = '$novoNome', valor = '$novoValor' WHERE id = $id";
+    $sqlUpdate = "UPDATE aluno SET nome = '$novoNome', sobrenome = '$novoSobrenome', email = '$novoEmail' WHERE id = $id";
 
     if ($conn->query($sqlUpdate) === TRUE) {
       // Fechar a conexão com o banco de dados
@@ -38,7 +39,7 @@ if (isset($_GET['id'])) {
   }
 
   // Consultar o banco de dados para obter os valores dos campos com base no ID
-  $sql = "SELECT nome, valor FROM produto WHERE id = $id";
+  $sql = "SELECT nome, sobrenome , email FROM aluno WHERE id = $id";
   $result = $conn->query($sql);
 
   // Verificar se a consulta retornou algum resultado
@@ -46,7 +47,8 @@ if (isset($_GET['id'])) {
     // Obter os valores dos campos
     $row = $result->fetch_assoc();
     $nome = $row['nome'];
-    $valor = $row['valor'];
+    $sobreNome = $row['sobrenome'];
+    $email = $row['email'];
   } else {
     echo "<p>Erro: Item não encontrado.</p>";
     exit;
@@ -72,14 +74,21 @@ if (isset($_GET['id'])) {
     <h1 class="mt-4">Página de Edição</h1>
 
     <form action="editar.php?id=<?php echo $id; ?>" method="POST">
-      <div class="form-group">
+      
+    <div class="form-group">
         <label for="nome">Nome:</label>
         <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $nome; ?>" required>
       </div>
+    </div>
       <div class="form-group">
-        <label for="valor">Valor:</label>
-        <input type="number" step="0.01" class="form-control" id="valor" name="valor" value="<?php echo $valor; ?>" required>
+        <label for="sobrenome">SobreNome:</label>
+        <input type="text" class="form-control" id="nomesobre" name="sobrenome" value="<?php echo $sobreNome; ?>" required>
       </div>
+      <div class="form-group">
+        <label for="sobrenome">Email:</label>
+        <input type="text" class="form-control" id="email" name="email" value="<?php echo $email; ?>" required>
+      </div>
+      
       <button type="submit" class="btn btn-primary">Salvar</button>
       <a href="listagem.php" class="btn btn-secondary">Voltar</a>
     </form>

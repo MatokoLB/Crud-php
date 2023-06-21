@@ -7,7 +7,7 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id']; // Obtém o ID do produto a partir do parâmetro na URL
 
-$sql = "DELETE FROM produto WHERE id = ?"; // Consulta SQL para excluir o produto com o ID especificado
+$sql = "DELETE FROM aluno WHERE id = ?"; // Consulta SQL para excluir o produto com o ID especificado
 
 $stmt = $conn->prepare($sql); // Prepara a consulta SQL
 $stmt->bind_param("i", $id); // Vincula o ID à consulta SQL

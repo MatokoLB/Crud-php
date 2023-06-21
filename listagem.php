@@ -22,67 +22,21 @@
     }
   </script>
 </head>
-<body>
-  
-<!-- 
-Comentários explicativos para o modal:
-
-<div class="modal fade" id="modal-info">
-  Define um modal (caixa de diálogo) com o ID "modal-info".
-
-  <div class="modal-dialog">
-    Define a área de conteúdo do modal.
-
-    <div class="modal-content">
-      Envolve todo o conteúdo do modal.
-
-      <div class="modal-header">
-        Contém o cabeçalho do modal.
-
-        <h4 class="modal-title">Detalhes do Produto</h4>
-        Exibe o título do modal como "Detalhes do Produto".
-
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        Botão de fechar que permite fechar o modal.
-      </div>
-
-      <div class="modal-body">
-        Contém o corpo do modal.
-
-        <p>ID: <span id="productId"></span></p>
-        Parágrafo que exibe o ID do produto, onde o valor será preenchido dinamicamente usando JavaScript.
-
-        <p>Nome: <span id="productName"></span></p>
-        Parágrafo que exibe o nome do produto, onde o valor será preenchido dinamicamente usando JavaScript.
-
-        <p>Valor: <span id="productValue"></span></p>
-        Parágrafo que exibe o valor do produto, onde o valor será preenchido dinamicamente usando JavaScript.
-      </div>
-
-      <div class="modal-footer">
-        Contém o rodapé do modal.
-
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-        Botão "Fechar" que permite fechar o modal.
-      </div>
-    </div>
-  </div>
-</div>
--->
+<
 
 <!--MODAL-->
 <div class="modal fade" id="modal-info">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Detalhes do Produto</h4>
+        <h4 class="modal-title">Detalhes do aluno</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
-        <p>ID: <span id="productId"></span></p>
-        <p>Nome: <span id="productName"></span></p>
-        <p>Valor: <span id="productValue"></span></p>
-        <p>tra <span ></span></p>
+        <p>ID: <span id="alunoId"></span></p>
+        <p>Nome: <span id="alunoName"></span></p>
+        <p>Sobrenome: <span id="alunoSobrenome"></span></p>
+        <p>Email: <span id="alunoEmail"></span></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
@@ -94,7 +48,7 @@ Comentários explicativos para o modal:
 
 <!--CONTAINER COM A TABELA-->
 <div class="container">
-  <h2>Lista de Produtos</h2>
+  <h2>Lista de Alunos</h2>
   <div class="table-responsive">
     <!-- Botão para adicionar um novo produto -->
     <a href="inclusao.php" class="btn btn-primary">
@@ -105,9 +59,9 @@ Comentários explicativos para o modal:
     <thead>
       <tr>
         <th scope="col" style="width:10%">ID</th>
-        <th scope="col" style="width:50%">Nome</th>
-        <th scope="col" style="width:20%">Valor</th>
-        <th scope="col" style="width:5%">Visualizar</th>
+        <th scope="col" style="width:20%">Nome</th>
+        <th scope="col" style="width:20%">Sobrenome</th>
+        <th scope="col" style="width:30%">Email</th>
         <th scope="col" style="width:5%">Editar</th>
         <th scope="col" style="width:5%">Excluir</th>
       </tr>
@@ -117,7 +71,7 @@ Comentários explicativos para o modal:
         <?php
         include 'conexao.php'; // Inclui o arquivo de conexão com o banco de dados
 
-        $sql = "SELECT * FROM produto"; // Consulta SQL para obter todos os produtos
+        $sql = "SELECT * FROM aluno"; // Consulta SQL para obter todos os produtos
 
         $result = $conn->query($sql); // Executa a consulta
         if ($conn->error) {
@@ -128,7 +82,8 @@ Comentários explicativos para o modal:
           <tr>
             <td><?php echo $row['id']; ?></td>
             <td><?php echo $row['nome']; ?></td>
-            <td>R$ <?php echo number_format($row['valor'], 2, '.', ','); ?></td>
+            <td><?php echo $row['sobrenome']; ?></td>
+            <td><?php echo $row['email']; ?></td>
             <td style="cursor: pointer;"><i class="fa fa-eye" aria-hidden="true"></i></td>
             <td><a href="editar.php?id=<?php echo $row['id']; ?>"><i class="fa fa-edit"></i></a></td>
             <td><a href="#" 
@@ -149,25 +104,28 @@ $(document).ready(function(){
   $(".delete-btn").click(function(e){
     e.preventDefault();
     // Obtém o ID do produto a ser excluído a partir do atributo 'data-id' do botão. O "this" se refere ao elemento atual que disparou o evento de clique.
-    var productId = $(this).data('id'); 
+    var alunoId = $(this).data('id'); 
     
     /*Exibe uma caixa de diálogo de confirmação ao usuário com a mensagem "Tem certeza de que deseja excluir este produto?".
     A função "confirm" retorna um valor booleano: "true" se o usuário clicar em "OK" e "false" se o usuário clicar em "Cancelar".*/
     var userConfirmation = confirm('Tem certeza de que deseja excluir este produto?'); // Exibe uma mensagem de confirmação ao usuário
     if(userConfirmation){
-      window.location.href = "excluir.php?id=" + productId; // Se confirmado, redireciona para a página "excluir.php" passando o ID do produto como parâmetro
+      window.location.href = "excluir.php?id=" + alunoId; // Se confirmado, redireciona para a página "excluir.php" passando o ID do produto como parâmetro
     }
   });
 
   $(".fa-eye").click(function(){
     var $row = $(this).closest("tr"); // Obtém a linha (tr) mais próxima do ícone de visualização clicado
-    var productId = $row.find("td:nth-child(1)").text(); // Obtém o ID do produto da primeira célula (td) da linha
-    var productName = $row.find("td:nth-child(2)").text(); // Obtém o nome do produto da segunda célula (td) da linha
-    var productValue = $row.find("td:nth-child(3)").text(); // Obtém o valor do produto da terceira célula (td) da linha
+    var alunoId = $row.find("td:nth-child(1)").text(); // Obtém o ID do produto da primeira célula (td) da linha
+    var alunoName = $row.find("td:nth-child(2)").text();
+    var alunoSobrenome = $row.find("td:nth-child(3)").text(); 
+    var alunoEmail = $row.find("td:nth-child(4)").text(); // Obtém o valor do produto da terceira célula (td) da linha
 
-    $("#productId").text(productId); // Define o ID do produto no elemento com o ID "productId"
-    $("#productName").text(productName); // Define o nome do produto no elemento com o ID "productName"
-    $("#productValue").text(productValue); // Define o valor do produto no elemento com o ID "productValue"
+    $("#alunoId").text(alunoId); // Define o ID do produto no elemento com o ID "alunoId"
+    $("#alunoName").text(alunoName);
+    $("#alunoSobrenome").text(alunoSobrenome); 
+    $("#alunoEmail").text(alunoEmail);  // Define o nome do produto no elemento com o ID "alunoName"
+ 
 
     $("#modal-info").modal(); // Abre o modal com os detalhes do produto
   });

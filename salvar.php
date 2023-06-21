@@ -3,20 +3,21 @@
 include 'conexao.php'; // Conecte ao banco de dados
 
 // Verifique se o tipo de operação está presente nos dados do formulário
-if (isset($_POST['nome'], $_POST['valor'], $_POST['operacao'])) {
+if (isset($_POST['nome'], $_POST['sobrenome'],$_POST['email'], $_POST['operacao'])) {
     $nome = $_POST['nome'];
-    $valor = $_POST['valor'];
+    $sobrenome = $_POST['sobrenome'];
+    $email = $_POST['email'];
     $operacao = $_POST['operacao'];
 
     // Verifique o tipo de operação para determinar a ação a ser realizada
     switch ($operacao) {
         case 'inserir':
             // Prepare a inserção dos dados no banco
-            $sql = "INSERT INTO produto (nome, valor) VALUES (?, ?)";
+            $sql = "INSERT INTO aluno (nome,sobrenome,email) VALUES (?, ?, ?)";
 
             if ($stmt = $conn->prepare($sql)) {
                 // Vincule as variáveis aos parâmetros da preparação
-                $stmt->bind_param("ss", $nome, $valor);
+                $stmt->bind_param("sss", $nome, $sobrenome, $email);
 
                 // Execute a instrução preparada
                 if ($stmt->execute()) {
@@ -37,10 +38,11 @@ if (isset($_POST['nome'], $_POST['valor'], $_POST['operacao'])) {
 
                 // Prepare a atualização dos dados no banco
                 $sql = "UPDATE produto SET nome = ?, valor = ? WHERE id = ?";
+                $sql = "UPDATE aluno SET nome = ?, sobrenome = ?, email = ? WHERE id = ?";
 
                 if ($stmt = $conn->prepare($sql)) {
                     // Vincule as variáveis aos parâmetros da preparação
-                    $stmt->bind_param("ssi", $nome, $valor, $id);
+                    $stmt->bind_param("ssi", $nome, $sobrenome, $email, $id);
 
                     // Execute a instrução preparada
                     if ($stmt->execute()) {
@@ -69,4 +71,4 @@ if (isset($_POST['nome'], $_POST['valor'], $_POST['operacao'])) {
 
 // Feche a conexão
 $conn->close();
-?>
+?>?>

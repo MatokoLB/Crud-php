@@ -5,7 +5,7 @@ $server_user = "admin";
 $server_password = "Unimar-ads-2023";
 $server_database = "minha_base";
 
-// //conexão com server local
+ //conexão com server local
 // $server_host = "localhost";
 // $server_user = "root";
 // $server_password = "";
