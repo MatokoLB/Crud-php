@@ -1,3 +1,5 @@
+<?php include "header.php"?>
+
 <?php
 // Verificar se o ID está presente na URL
 if (isset($_GET['id'])) {
@@ -62,15 +64,10 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Editar</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-</head>
-<body>
-  <div class="container">
+
+
+<div class="container">
+<div class="card-cont bg-info p-4">
     <h1 class="mt-4">Página de Edição</h1>
 
     <form action="editar.php?id=<?php echo $id; ?>" method="POST">
@@ -79,7 +76,6 @@ if (isset($_GET['id'])) {
         <label for="nome">Nome:</label>
         <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $nome; ?>" required>
       </div>
-    </div>
       <div class="form-group">
         <label for="sobrenome">SobreNome:</label>
         <input type="text" class="form-control" id="nomesobre" name="sobrenome" value="<?php echo $sobreNome; ?>" required>
@@ -93,9 +89,6 @@ if (isset($_GET['id'])) {
       <a href="listagem.php" class="btn btn-secondary">Voltar</a>
     </form>
   </div>
+  </div>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-</body>
-</html>
+  <?php include "footer.php"?>

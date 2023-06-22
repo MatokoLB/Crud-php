@@ -1,23 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Inclusão de Produtos</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
-<div class="container">
-  <h2>Incluir Produto</h2>
-  <!--Explicação detalhada da linha:
-  <form>: É uma tag HTML que indica o início de um formulário.
-action="salvar.php": É um atributo do formulário que especifica
-para onde os dados do formulário serão enviados quando o formulário for submetido.
-Nesse caso, o valor do atributo é "salvar.php", indicando que os dados do formulário serão enviados para o arquivo "salvar.php".
+<?php include "header.php"?>
 
-method="post": É um atributo do formulário que especifica o método HTTP a ser usado para enviar os dados do formulário. Nesse caso, o valor do atributo é "post", indicando que os dados serão enviados no corpo da requisição HTTP.
--->
-
+<div class="container p5 >">
+  
+<div class="card-cont bg-info p-4">
+  <h2>Adicionar</h2>
   <form action="salvar.php" method="post">
    
   <div class="form-group">
@@ -44,8 +30,12 @@ method="post": É um atributo do formulário que especifica o método HTTP a ser
     <!-- O campo abaixo é usado para definir o tipo de operação, neste caso, "inclusao" -->
     <input type="hidden" name="operacao" value="inserir">
     <!-- O botão abaixo é usado para enviar o formulário e salvar os dados do produto -->
-    <button type="submit" class="btn btn-primary">Salvar</button>
+    <button type="submit" class="mt-3 btn btn-light">Salvar</button>
   </form>
+</div>
   </div>
-</body>
-</html>
+
+
+<?php include "footer.php"?>
+
+
