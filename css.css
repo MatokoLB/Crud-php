@@ -4,12 +4,16 @@ body {
     justify-content: center;
     flex-direction: column;
     transition: 0.3s;
-    color: black;
+   
   }
 
+input[type="checkbox"] {
+    display: none;
+  }
   .dark_theme {
     display: none;
   }
+
 
 .dark{
     background-color: rgb(43, 33, 33);
@@ -22,6 +26,10 @@ body {
 
 .dark .light_theme {
   display: none;
+}
+
+.light_theme{
+  color: rgba(244, 197, 109, 0.995);
 }
 
 
@@ -71,6 +79,11 @@ body {
     /* color: #696969; */
   }
  
+#footer{
+  background-color: #21081a;
+  height: 2.7rem;
+}
+
   @media screen and (max-width: 995px) {
     .card {
       flex-direction: column;
@@ -80,6 +93,9 @@ body {
 
     .row {
         display: flow-root !important;
+    }
+    #footer {
+    background-color: rgba(0, 0, 0, 0);
     }
 
   }
