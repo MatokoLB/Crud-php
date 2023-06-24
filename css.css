@@ -3,7 +3,26 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    transition: 0.3s;
+    color: black;
   }
+
+  .dark_theme {
+    display: none;
+  }
+
+.dark{
+    background-color: rgb(43, 33, 33);
+    color: aliceblue;
+}
+
+.dark .dark_theme {
+  display: block;
+}
+
+.dark .light_theme {
+  display: none;
+}
 
 
   .card-cont {
@@ -12,7 +31,6 @@ body {
     margin: 70px auto;
   }
   
-
   .card {
     max-width: 30rem;
     flex-direction: row;
@@ -21,9 +39,9 @@ body {
     box-shadow: 0 7px 7px rgba(0, 0, 0, 0.18);
     margin: 3em auto;
   }
-  .card.dark {
-    color: #fff;
-  }
+
+  
+
   .card.card.bg-light-subtle .card-title {
     color: dimgrey;
   }

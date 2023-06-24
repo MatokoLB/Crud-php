@@ -1,20 +1,21 @@
 <?php include "header.php"?>
+
 <!--MODAL-->
 <div class="modal fade" id="modal-info">
   <div class="modal-dialog ">
     <div class="modal-content  ">
       <div class="modal-header bg-info">
-        <h4 class="modal-title">Detalhes do aluno</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Detalhes do aluno</h4>      
+           
+        <button type="button " class="close" data-dismiss="modal"><i><svg class="bg-danger" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+  <path  d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
+</svg></i></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body bg-info">
         <p>ID: <span id="alunoId"></span></p>
         <p>Nome: <span id="alunoName"></span></p>
         <p>Sobrenome: <span id="alunoSobrenome"></span></p>
         <p>Email: <span id="alunoEmail"></span></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>
@@ -24,7 +25,6 @@
 <!--CONTAINER COM A TABELA-->
 <div class="container">
   <h2 class="text-center">Lista de Alunos</h2>
-
         <?php
         include 'conexao.php'; // Inclui o arquivo de conexão com o banco de dados
 
@@ -52,6 +52,7 @@
         <a style="cursor: pointer;" class="btn btn-outline-light"><i class="fa fa-eye btn-outline-light" aria-hidden="true"></i></a>
         
         <a  class="btn btn-success" href="editar.php?id=<?php echo $row['id']; ?>">
+               
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
   <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
   <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
