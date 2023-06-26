@@ -103,7 +103,7 @@ $(document).ready(function(){
     
     /*Exibe uma caixa de diálogo de confirmação ao usuário com a mensagem "Tem certeza de que deseja excluir este produto?".
     A função "confirm" retorna um valor booleano: "true" se o usuário clicar em "OK" e "false" se o usuário clicar em "Cancelar".*/
-    var userConfirmation = confirm('Tem certeza de que deseja excluir este produto?'); // Exibe uma mensagem de confirmação ao usuário
+    var userConfirmation = confirm('Tem certeza de que deseja excluir este aluno da lista'); // Exibe uma mensagem de confirmação ao usuário
     if(userConfirmation){
       window.location.href = "excluir.php?id=" + alunoId; // Se confirmado, redireciona para a página "excluir.php" passando o ID do produto como parâmetro
     }
