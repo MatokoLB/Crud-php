@@ -25,24 +25,58 @@
 <!--CONTAINER COM A TABELA-->
 <div class="container">
   <h2 class="text-center">Lista de Alunos</h2>
+
+
+
   <?php
   include 'conexao.php'; // Inclui o arquivo de conexão com o banco de dados
 
-  $sql = "SELECT * FROM aluno"; // Consulta SQL para obter todos os produtos
+  $sql = "SELECT * FROM aluno"; // Consulta SQL para obter todos
 
-  $result = $conn->query($sql); // Executa a consulta
+  //filta busca somente string
+  $busca = filter_input(INPUT_GET, 'busca', FILTER_SANITIZE_STRING);
+
+
+  $condicoes = [
+    strlen($busca) ? 'WHERE nome LIKE "%' . str_replace(' ', '%', $busca) . '%"' : null
+  ];
+  //trasnforma conticoes em uma string
+  $filtroNome = implode(' AND ', $condicoes);
+ 
+
+  //juntar strings
+$sql2 = "$sql $filtroNome ";
+
+  $result = $conn->query($sql2); // Executa a consulta
   if ($conn->error) {
     die("Erro na consulta: " . $conn->error); // Se houver um erro na consulta, interrompe a execução do script
   }
-  ?>
-  <div class="container-fluid">
-    <div class="row row-cols-2">
 
+
+  ?>
+
+
+
+  <div class="container-fluid ">
+
+
+    <form class="  d-flex justify-content-center" action="" method="get">
+      <div class="input-group w-50 ">
+        <input type="text" name="busca" class="form-control  " placeholder="...Buscar nome" aria-label="Input group example" aria-describedby="basic-addon1" value="<?= $busca ?>">
+        <button class="input-group-text" id="basic-addon1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+          </svg>
+        </button>
+      </div>
+    </form>
+
+
+    <div class="row row-cols-2">
       <?php while ($row = $result->fetch_assoc()) : ?>
 
-        <div class="card bg-info mt-6">
-          <img src="https://img.freepik.com/vetores-premium/homem-perfil-caricatura_18591-584<?php
-                                                                                              echo rand(75, 84) ?>.jpg?w=2000" class="card-img-top" alt="...">
+        <div class="card bg-info mt-6 list">
+          <img src="https://img.freepik.com/vetores-premium/homem-perfil-caricatura_18591-584<?php echo rand(75, 84) ?>.jpg?w=2000" class="card-img-top" alt="...">
           <div class="card-body">
             <div class="text-section">
               <h5 class="card-title text-white"><?php echo $row['nome']; ?></h5>
@@ -73,12 +107,16 @@
           </div>
 
         </div>
+
+
       <?php endwhile; ?>
     </div>
 
   </div>
 
 </div>
+
+
 <?php include 'footer.php'; ?>
 
 
@@ -95,6 +133,7 @@
 
 <script>
   $(document).ready(function() {
+
     //Isso seleciona todos os elementos com a classe CSS "delete-btn" e atribui a eles um manipulador de evento de clique.
     $(".delete-btn").click(function(e) {
       e.preventDefault();
