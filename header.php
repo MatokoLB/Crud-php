@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Página de Produtos</title>
+  <title>CRUD-PHP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- adicionando jQuery -->
@@ -10,8 +10,8 @@
 
   <!-- adicionando Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css.css">
-
+  <link rel="stylesheet" href="css.css"> 
+ <link rel="shortcut icon" href="https://th.bing.com/th/id/R.adbac78231c9a2ff5c21aaa32dd4e1e4?rik=jWTUkOKwKIk7jg&riu=http%3a%2f%2flofrev.net%2fwp-content%2fphotos%2f2017%2f05%2fphp_emblem.png&ehk=gbX0plW%2fbqAeSR4cWmkL44R%2bUWxCpG3CL%2b2V4KHQlpQ%3d&risl=&pid=ImgRaw&r=0">
   <!-- adicionando Font Awesome -->
   <!-- Option 1: Include in HTML -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -80,6 +80,7 @@
     // techo de cod para mundaça de tema: dark
     function toggleDarkMode() {
       $("body").toggleClass("dark");
+      $('table').toggleClass("table-dark");
     }
 
     // carregar dark mode
