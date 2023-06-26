@@ -55,7 +55,7 @@ if (isset($_POST['nome'], $_POST['sobrenome'],$_POST['email'], $_POST['operacao'
                     echo "Erro: " . $conn->error;
                 }
             } else {
-                echo "ID do produto não fornecido.";
+                echo "ID não fornecido.";
             }
             break;
         default:

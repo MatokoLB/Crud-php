@@ -17,4 +17,3 @@ if ($stmt->execute()) { // Executa a consulta SQL
 } else {
   die("Erro ao excluir o produto: " . $conn->error); // Se houver um erro ao excluir o produto, interrompe a execução do script
 }
-?>

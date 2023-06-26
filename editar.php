@@ -1,4 +1,4 @@
-<?php include "header.php"?>
+<?php include "header.php" ?>
 
 <?php
 // Verificar se o ID está presente na URL
@@ -67,12 +67,12 @@ if (isset($_GET['id'])) {
 
 
 <div class="container">
-<div class="card-cont bg-info p-4">
+  <div class="card-cont bg-info p-4">
     <h1 class="mt-4">Página de Edição</h1>
 
     <form action="editar.php?id=<?php echo $id; ?>" method="POST">
-      
-    <div class="form-group">
+
+      <div class="form-group">
         <label for="nome">Nome:</label>
         <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $nome; ?>" required>
       </div>
@@ -84,11 +84,11 @@ if (isset($_GET['id'])) {
         <label for="sobrenome">Email:</label>
         <input type="text" class="form-control" id="email" name="email" value="<?php echo $email; ?>" required>
       </div>
-      
+
       <button type="submit" class="btn btn-primary">Salvar</button>
       <a href="listagem.php" class="btn btn-secondary">Voltar</a>
     </form>
   </div>
-  </div>
+</div>
 
-  <?php include "footer.php"?>
+<?php include "footer.php" ?>
